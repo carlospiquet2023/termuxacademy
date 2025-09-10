@@ -39,6 +39,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/css/xterm.css" />
     <script src="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/lib/xterm.js"></script>
     <style>
+        html, body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        
         :root {
             --bg-main: #0a0e13;
             --bg-secondary: #1a1f2e;
@@ -418,7 +429,7 @@
         }
     </style>
 </head>
-<body class="flex flex-col md:flex-row h-screen bg-pattern overflow-hidden">
+<body class="flex flex-col min-h-screen bg-pattern">
     <!-- Matrix Background Animation -->
     <div class="matrix-bg" id="matrixBg"></div>
     
@@ -432,8 +443,9 @@
         <span id="notificationText"></span>
     </div>
 
-    <!-- Advanced Sidebar -->
-    <aside class="sidebar w-full md:w-80 flex-shrink-0 p-6 space-y-6 md:overflow-y-auto">
+    <div class="flex flex-col md:flex-row flex-grow overflow-hidden">
+        <!-- Advanced Sidebar -->
+        <aside class="sidebar w-full md:w-80 flex-shrink-0 p-6 space-y-6 md:overflow-y-auto">
         <div class="text-center mb-8">
             <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mb-4">
                 <i class="fas fa-terminal text-2xl text-white"></i>
@@ -5754,7 +5766,7 @@ GET /winlogbeat-*/_search
             </div>
         </section>
 
-    </main>
+    <!-- Final das seções de conteúdo, não fechamos o main aqui -->
 
     <script>
         // App State Management
@@ -6533,8 +6545,11 @@ GET /winlogbeat-*/_search
         }
     </script>
 
+    <!-- Fechando o wrapper da página principal -->
+    </div>
+
     <!-- Footer com informações de copyright -->
-    <footer class="bg-gray-900 border-t border-gray-700 mt-12">
+    <footer class="bg-gray-900 border-t border-gray-700 mt-auto w-full">
         <div class="max-w-7xl mx-auto px-4 py-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Sobre o Projeto -->
