@@ -1,15 +1,43 @@
 {
-  "name": "termux_aula",
+  "name": "termux-academy",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Plataforma educacional interativa para ensinar hacking ético e segurança cibernética usando o Termux - Do Junior ao Master em Hacking Ético",
+  "main": "index.html",
   "scripts": {
+    "start": "python -m http.server 8000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "termux",
+    "hacking-ético",
+    "segurança-cibernética",
+    "educação",
+    "terminal",
+    "linux",
+    "cybersecurity",
+    "ethical-hacking",
+    "tutorial",
+    "academy"
+  ],
+  "author": {
+    "name": "Carlos Antonio de Oliveira Piquet",
+    "email": "carlospiquet.projetos@gmail.com",
+    "url": "https://github.com/carlospiquet2023"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carlospiquet2023/termuxacademy.git"
+  },
+  "homepage": "https://carlospiquet2023.github.io/termuxacademy",
+  "bugs": {
+    "url": "https://github.com/carlospiquet2023/termuxacademy/issues",
+    "email": "carlospiquet.projetos@gmail.com"
+  },
   "dependencies": {
     "@xterm/xterm": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
