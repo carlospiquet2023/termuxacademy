@@ -436,6 +436,9 @@
             <source src="https://i.imgur.com/IDCn1yY.mp4" type="video/mp4">
             Seu navegador não suporta o elemento de vídeo.
         </video>
+        <button id="soundButton" style="position: absolute; bottom: 20px; right: 20px; background: rgba(0,0,0,0.7); color: white; border: 2px solid rgba(255,255,255,0.3); padding: 12px; border-radius: 50%; cursor: pointer; font-size: 20px; transition: all 0.3s ease; z-index: 10000;">
+            <i class="fas fa-volume-mute"></i>
+        </button>
     </div>
     <!-- Matrix Background Animation -->
     <div class="matrix-bg" id="matrixBg"></div>
@@ -6554,9 +6557,29 @@ GET /winlogbeat-*/_search
         // Intro Video Handling
         const introVideo = document.getElementById('introVideo');
         const introVid = document.getElementById('introVid');
+        const soundButton = document.getElementById('soundButton');
         if (introVid) {
             introVid.addEventListener('ended', function() {
                 introVideo.style.display = 'none';
+            });
+        }
+        if (soundButton) {
+            soundButton.addEventListener('click', function() {
+                if (introVid.muted) {
+                    introVid.muted = false;
+                    soundButton.innerHTML = '<i class="fas fa-volume-up"></i>';
+                } else {
+                    introVid.muted = true;
+                    soundButton.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                }
+            });
+            soundButton.addEventListener('mouseover', function() {
+                soundButton.style.background = 'rgba(0,0,0,0.9)';
+                soundButton.style.borderColor = 'rgba(255,255,255,0.6)';
+            });
+            soundButton.addEventListener('mouseout', function() {
+                soundButton.style.background = 'rgba(0,0,0,0.7)';
+                soundButton.style.borderColor = 'rgba(255,255,255,0.3)';
             });
         }
     </script>
