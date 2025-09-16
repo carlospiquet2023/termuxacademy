@@ -436,6 +436,9 @@
             <source src="https://i.imgur.com/IDCn1yY.mp4" type="video/mp4">
             Seu navegador não suporta o elemento de vídeo.
         </video>
+        <button id="skipButton" style="position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.7); color: white; border: 2px solid rgba(255,255,255,0.3); padding: 10px 15px; border-radius: 25px; cursor: pointer; font-size: 14px; transition: all 0.3s ease; z-index: 10000;">
+            <i class="fas fa-forward mr-2"></i>Pular Vídeo
+        </button>
         <button id="soundButton" style="position: absolute; bottom: 20px; right: 20px; background: rgba(0,0,0,0.7); color: white; border: 2px solid rgba(255,255,255,0.3); padding: 12px; border-radius: 50%; cursor: pointer; font-size: 20px; transition: all 0.3s ease; z-index: 10000;">
             <i class="fas fa-volume-mute"></i>
         </button>
@@ -8019,6 +8022,15 @@ GET /winlogbeat-*/_search
         const introVideo = document.getElementById('introVideo');
         const introVid = document.getElementById('introVid');
         const soundButton = document.getElementById('soundButton');
+        const skipButton = document.getElementById('skipButton');
+        
+        // Skip button functionality
+        if (skipButton) {
+            skipButton.addEventListener('click', function() {
+                introVideo.style.display = 'none';
+            });
+        }
+        
         if (introVid) {
             introVid.addEventListener('ended', function() {
                 introVideo.style.display = 'none';
