@@ -430,6 +430,13 @@
     </style>
 </head>
 <body class="flex flex-col min-h-screen bg-pattern">
+    <!-- Intro Video Overlay -->
+    <div id="introVideo" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 9999; display: flex; align-items: center; justify-content: center;">
+        <video id="introVid" autoplay muted style="width: 100%; height: 100%; object-fit: cover;">
+            <source src="https://i.imgur.com/IDCn1yY.mp4" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+        </video>
+    </div>
     <!-- Matrix Background Animation -->
     <div class="matrix-bg" id="matrixBg"></div>
     
@@ -6543,6 +6550,15 @@ GET /winlogbeat-*/_search
                 // navigator.serviceWorker.register('/sw.js');
             });
         }
+
+        // Intro Video Handling
+        const introVideo = document.getElementById('introVideo');
+        const introVid = document.getElementById('introVid');
+        if (introVid) {
+            introVid.addEventListener('ended', function() {
+                introVideo.style.display = 'none';
+            });
+        }
     </script>
 
     <!-- Fechando o wrapper da página principal -->
@@ -6603,7 +6619,7 @@ GET /winlogbeat-*/_search
                 </p>
                 <p class="text-gray-500 text-xs mt-2">
                     Licenciado sob a <a href="https://github.com/carlospiquet2023/termuxacademy/blob/main/LICENSE" class="text-cyan-400 hover:text-cyan-300">Licença MIT</a> | 
-                    Desenvolvido com ❤️ para a comunidade de segurança cibernética
+                    
                 </p>
                 <p class="text-gray-500 text-xs mt-1">
                     <i class="fas fa-shield-alt text-cyan-400"></i>
