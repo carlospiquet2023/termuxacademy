@@ -574,7 +574,7 @@
                 <i class="fas fa-mobile-alt mr-3"></i>
                 <span>Mobile Security</span>
             </a>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="crypto">
+            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="cryptography">
                 <i class="fas fa-lock mr-3"></i>
                 <span>Cryptography</span>
             </a>
@@ -626,7 +626,7 @@
                             <i class="fas fa-code mr-2"></i>500+ Comandos
                         </span>
                         <span class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                            <i class="fas fa-graduation-cap mr-2"></i>15 Módulos
+                            <i class="fas fa-graduation-cap mr-2"></i>18 Módulos
                         </span>
                     </div>
                 </div>
@@ -5771,6 +5771,874 @@ GET /winlogbeat-*/_search
                             <li>• Customer notification</li>
                             <li>• Media statements</li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wireless Security Section -->
+        <section id="wireless" class="content-section space-y-8">
+            <div class="text-center mb-8">
+                <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
+                    Wireless Security
+                </h2>
+                <p class="text-xl text-gray-300">Segurança em Redes Sem Fio - Wi-Fi Hacking e Proteção</p>
+            </div>
+
+            <!-- Wireless Security Overview -->
+            <div class="bg-gradient-to-r from-blue-900/50 to-cyan-900/50 p-6 rounded-lg border border-blue-500/30 mb-8">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-wifi text-blue-400 text-2xl mr-3"></i>
+                    <h3 class="text-xl font-bold text-blue-300">🌐 SEGURANÇA WIRELESS: O FRONTE INVISÍVEL</h3>
+                </div>
+                <p class="text-blue-200 mb-4">
+                    <strong>As redes sem fio são o ponto de entrada mais comum para ataques!</strong> 
+                    80% dos ataques cibernéticos começam por vulnerabilidades Wi-Fi.
+                </p>
+                <p class="text-blue-200">
+                    <strong>OBJETIVO:</strong> Aprender a identificar, testar e proteger redes wireless 
+                    usando ferramentas avançadas no Termux.
+                </p>
+            </div>
+
+            <!-- Wireless Security Framework -->
+            <div class="card p-8 rounded-xl mb-8">
+                <h3 class="text-2xl font-bold mb-6 flex items-center">
+                    <i class="fas fa-shield-alt mr-3 text-blue-400"></i>
+                    Framework de Segurança Wireless
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                    <div class="card p-6 rounded-lg text-center hover:scale-105 transition-transform border-2 border-blue-500/30">
+                        <i class="fas fa-search text-4xl text-blue-400 mb-4"></i>
+                        <h4 class="text-lg font-semibold text-blue-400 mb-2">1. Recon</h4>
+                        <p class="text-sm text-gray-300">Descoberta de Redes</p>
+                    </div>
+                    <div class="card p-6 rounded-lg text-center hover:scale-105 transition-transform border-2 border-cyan-500/30">
+                        <i class="fas fa-key text-4xl text-cyan-400 mb-4"></i>
+                        <h4 class="text-lg font-semibold text-cyan-400 mb-2">2. Cracking</h4>
+                        <p class="text-sm text-gray-300">Quebra de Senhas</p>
+                    </div>
+                    <div class="card p-6 rounded-lg text-center hover:scale-105 transition-transform border-2 border-purple-500/30">
+                        <i class="fas fa-eye text-4xl text-purple-400 mb-4"></i>
+                        <h4 class="text-lg font-semibold text-purple-400 mb-2">3. Monitoring</h4>
+                        <p class="text-sm text-gray-300">Monitoramento</p>
+                    </div>
+                    <div class="card p-6 rounded-lg text-center hover:scale-105 transition-transform border-2 border-green-500/30">
+                        <i class="fas fa-lock text-4xl text-green-400 mb-4"></i>
+                        <h4 class="text-lg font-semibold text-green-400 mb-2">4. Protection</h4>
+                        <p class="text-sm text-gray-300">Proteção e Defesa</p>
+                    </div>
+                </div>
+
+                <!-- Detailed Wireless Phases -->
+                <div class="space-y-6">
+                    <div class="bg-gradient-to-r from-blue-900/50 to-cyan-900/50 p-6 rounded-lg border border-blue-500/30">
+                        <h4 class="text-xl font-bold text-blue-300 mb-4">🔍 Fase 1: Reconhecimento Wireless</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h5 class="font-semibold text-cyan-400 mb-3">🛠️ Ferramentas de Descoberta:</h5>
+                                <ul class="text-sm space-y-1">
+                                    <li>• <code class="bg-gray-800 px-2 py-1 rounded">iwconfig</code> - Configuração de interfaces</li>
+                                    <li>• <code class="bg-gray-800 px-2 py-1 rounded">airmon-ng</code> - Modo monitor</li>
+                                    <li>• <code class="bg-gray-800 px-2 py-1 rounded">airodump-ng</code> - Scan de redes</li>
+                                    <li>• <code class="bg-gray-800 px-2 py-1 rounded">wash</code> - Detecção WPS</li>
+                                    <li>• <code class="bg-gray-800 px-2 py-1 rounded">kismet</code> - Sniffing avançado</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-green-400 mb-3">📊 Comandos Essenciais:</h5>
+                                <div class="space-y-3">
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-cyan-400">iwconfig</code><br>
+                                        <span class="text-gray-400 text-xs">Ver interfaces wireless disponíveis</span>
+                                    </div>
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-cyan-400">airmon-ng start wlan0</code><br>
+                                        <span class="text-gray-400 text-xs">Ativar modo monitor</span>
+                                    </div>
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-cyan-400">airodump-ng wlan0mon</code><br>
+                                        <span class="text-gray-400 text-xs">Escanear redes Wi-Fi</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-cyan-900/50 to-purple-900/50 p-6 rounded-lg border border-cyan-500/30">
+                        <h4 class="text-xl font-bold text-cyan-300 mb-4">🔓 Fase 2: Cracking de Senhas Wi-Fi</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h5 class="font-semibold text-purple-400 mb-3">🎯 Ataques Principais:</h5>
+                                <ul class="text-sm space-y-2">
+                                    <li><strong>WEP:</strong> RC4 vulnerável - crack em minutos</li>
+                                    <li><strong>WPA:</strong> Handshake capture + wordlist attack</li>
+                                    <li><strong>WPA2:</strong> PMKID attack (menos handshakes)</li>
+                                    <li><strong>WPA3:</strong> Mais seguro, mas vulnerável a downgrade</li>
+                                    <li><strong>WPS:</strong> PIN brute force (8 dígitos)</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-red-400 mb-3">⚡ Ataques Rápidos:</h5>
+                                <div class="space-y-3">
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-red-400">reaver -i wlan0mon -b [BSSID] -vv</code><br>
+                                        <span class="text-gray-400 text-xs">Ataque WPS (se habilitado)</span>
+                                    </div>
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-red-400">aircrack-ng -w wordlist.txt capture.cap</code><br>
+                                        <span class="text-gray-400 text-xs">Crack WPA handshake</span>
+                                    </div>
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-red-400">hcxdumptool -i wlan0mon -o dump.pcapng</code><br>
+                                        <span class="text-gray-400 text-xs">Captura PMKID para hashcat</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-purple-900/50 to-pink-900/50 p-6 rounded-lg border border-purple-500/30">
+                        <h4 class="text-xl font-bold text-purple-300 mb-4">👁️ Fase 3: Monitoramento e Sniffing</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h5 class="font-semibold text-pink-400 mb-3">📡 Técnicas Avançadas:</h5>
+                                <ul class="text-sm space-y-2">
+                                    <li><strong>Deauthentication:</strong> Forçar reconexão para capture</li>
+                                    <li><strong>Evil Twin:</strong> AP falso para MITM</li>
+                                    <li><strong>Packet Injection:</strong> Injetar pacotes na rede</li>
+                                    <li><strong>Channel Hopping:</strong> Monitorar múltiplos canais</li>
+                                    <li><strong>Signal Analysis:</strong> Análise de força do sinal</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-yellow-400 mb-3">🔧 Ferramentas de Monitoramento:</h5>
+                                <div class="space-y-3">
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-yellow-400">aireplay-ng -0 5 -a [BSSID] wlan0mon</code><br>
+                                        <span class="text-gray-400 text-xs">Deauth attack (5 pacotes)</span>
+                                    </div>
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-yellow-400">mdk4 wlan0mon d -B [BSSID]</code><br>
+                                        <span class="text-gray-400 text-xs">Deauth massivo</span>
+                                    </div>
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-yellow-400">tcpdump -i wlan0mon -w capture.pcap</code><br>
+                                        <span class="text-gray-400 text-xs">Captura de pacotes</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-green-900/50 to-blue-900/50 p-6 rounded-lg border border-green-500/30">
+                        <h4 class="text-xl font-bold text-green-300 mb-4">🛡️ Fase 4: Proteção e Boas Práticas</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h5 class="font-semibold text-blue-400 mb-3">🔒 Configurações Seguras:</h5>
+                                <ul class="text-sm space-y-2">
+                                    <li><strong>WPA3:</strong> Padrão mais seguro disponível</li>
+                                    <li><strong>Desabilitar WPS:</strong> Remove vetor de ataque</li>
+                                    <li><strong>Mudar SSID padrão:</strong> Evita reconhecimento</li>
+                                    <li><strong>MAC Filtering:</strong> Controle de acesso</li>
+                                    <li><strong>Segmentação:</strong> Redes guest separadas</li>
+                                    <li><strong>Monitoramento:</strong> Logs e alertas</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-orange-400 mb-3">⚠️ Riscos Comuns:</h5>
+                                <div class="space-y-3">
+                                    <div class="bg-red-900/30 p-3 rounded border-l-4 border-red-500">
+                                        <strong>Senhas Fracas:</strong> 90% das redes usam senhas crackáveis
+                                    </div>
+                                    <div class="bg-orange-900/30 p-3 rounded border-l-4 border-orange-500">
+                                        <strong>WPS Habilitado:</strong> Ataque em até 4 horas
+                                    </div>
+                                    <div class="bg-yellow-900/30 p-3 rounded border-l-4 border-yellow-500">
+                                        <strong>APs Antigos:</strong> Firmware desatualizado
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wireless Tools Installation -->
+            <div class="card p-8 rounded-xl mb-8">
+                <h3 class="text-2xl font-bold mb-6 flex items-center">
+                    <i class="fas fa-download mr-3 text-green-400"></i>
+                    Instalação das Ferramentas Wireless
+                </h3>
+                
+                <div class="bg-gray-800 p-6 rounded-lg mb-6">
+                    <h4 class="text-lg font-semibold text-green-400 mb-4">📦 Pacotes Essenciais:</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <h5 class="font-semibold text-cyan-400 mb-2">Aircrack-ng Suite:</h5>
+                            <code class="block bg-gray-900 p-3 rounded text-sm mb-2">pkg install aircrack-ng</code>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold text-cyan-400 mb-2">Reaver (WPS):</h5>
+                            <code class="block bg-gray-900 p-3 rounded text-sm mb-2">pkg install reaver</code>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold text-cyan-400 mb-2">Hashcat:</h5>
+                            <code class="block bg-gray-900 p-3 rounded text-sm mb-2">pkg install hashcat</code>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold text-cyan-400 mb-2">Tcpdump/Wireshark:</h5>
+                            <code class="block bg-gray-900 p-3 rounded text-sm mb-2">pkg install tcpdump wireshark</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-900/30 border-l-4 border-yellow-500 p-4 rounded">
+                    <h4 class="text-yellow-400 font-semibold mb-2">⚠️ Requisitos de Hardware:</h4>
+                    <ul class="text-sm text-yellow-200 space-y-1">
+                        <li>• Chipset wireless compatível (ex: Atheros, Ralink)</li>
+                        <li>• Suporte a modo monitor e packet injection</li>
+                        <li>• Adaptadores externos recomendados para melhor performance</li>
+                        <li>• Root access necessário para algumas ferramentas</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Practical Wireless Scenarios -->
+            <div class="card p-8 rounded-xl">
+                <h3 class="text-2xl font-bold mb-6 flex items-center">
+                    <i class="fas fa-flask mr-3 text-purple-400"></i>
+                    Cenários Práticos de Wireless Security
+                </h3>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-gradient-to-br from-blue-900/50 to-cyan-900/50 p-6 rounded-lg border border-blue-500/30">
+                        <h4 class="text-xl font-bold text-blue-300 mb-4">🎯 Cenário 1: Auditoria Wi-Fi Empresarial</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <span class="text-cyan-400 font-bold">1.</span>
+                                <div>
+                                    <strong class="text-cyan-400">Recon:</strong> Mapear todas as APs e clientes
+                                    <code class="block bg-gray-800 p-2 rounded text-xs mt-1">airodump-ng -c 6 --bssid [BSSID] wlan0mon</code>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-green-400 font-bold">2.</span>
+                                <div>
+                                    <strong class="text-green-400">Teste:</strong> Verificar força das senhas
+                                    <code class="block bg-gray-800 p-2 rounded text-xs mt-1">aircrack-ng -w rockyou.txt capture.cap</code>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-yellow-400 font-bold">3.</span>
+                                <div>
+                                    <strong class="text-yellow-400">Relatório:</strong> Documentar vulnerabilidades encontradas
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-purple-900/50 to-pink-900/50 p-6 rounded-lg border border-purple-500/30">
+                        <h4 class="text-xl font-bold text-purple-300 mb-4">🚨 Cenário 2: Detecção de Rogue APs</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <span class="text-pink-400 font-bold">1.</span>
+                                <div>
+                                    <strong class="text-pink-400">Monitor:</strong> Identificar APs não autorizados
+                                    <code class="block bg-gray-800 p-2 rounded text-xs mt-1">kismet -c wlan0mon</code>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-red-400 font-bold">2.</span>
+                                <div>
+                                    <strong class="text-red-400">Analyze:</strong> Verificar sinais suspeitos
+                                    <code class="block bg-gray-800 p-2 rounded text-xs mt-1">tcpdump -i wlan0mon -n | grep -i beacon</code>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-orange-400 font-bold">3.</span>
+                                <div>
+                                    <strong class="text-orange-400">Mitigate:</strong> Desconectar dispositivos comprometidos
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mobile Security Section -->
+        <section id="mobile" class="content-section space-y-8">
+            <div class="text-center mb-8">
+                <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+                    Mobile Security
+                </h2>
+                <p class="text-xl text-gray-300">Segurança em Dispositivos Móveis - Android & iOS Hacking</p>
+            </div>
+
+            <!-- Mobile Security Overview -->
+            <div class="bg-gradient-to-r from-purple-900/50 to-pink-900/50 p-6 rounded-lg border border-purple-500/30 mb-8">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-mobile-alt text-purple-400 text-2xl mr-3"></i>
+                    <h3 class="text-xl font-bold text-purple-300">📱 SEGURANÇA MOBILE: O DISPOSITIVO NA SUA MÃO</h3>
+                </div>
+                <p class="text-purple-200 mb-4">
+                    <strong>Dispositivos móveis são computadores pessoais!</strong> 
+                    90% dos usuários não protegem adequadamente seus smartphones e tablets.
+                </p>
+                <p class="text-purple-200">
+                    <strong>OBJETIVO:</strong> Aprender a auditar, testar e proteger aplicações móveis 
+                    usando ferramentas avançadas no Termux e além.
+                </p>
+            </div>
+
+            <!-- Mobile Security Framework -->
+            <div class="card p-8 rounded-xl mb-8">
+                <h3 class="text-2xl font-bold mb-6 flex items-center">
+                    <i class="fas fa-shield-alt mr-3 text-purple-400"></i>
+                    Framework de Segurança Mobile
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                    <div class="card p-6 rounded-lg text-center hover:scale-105 transition-transform border-2 border-purple-500/30">
+                        <i class="fas fa-search text-4xl text-purple-400 mb-4"></i>
+                        <h4 class="text-lg font-semibold text-purple-400 mb-2">1. Recon</h4>
+                        <p class="text-sm text-gray-300">Análise de Apps</p>
+                    </div>
+                    <div class="card p-6 rounded-lg text-center hover:scale-105 transition-transform border-2 border-pink-500/30">
+                        <i class="fas fa-code text-4xl text-pink-400 mb-4"></i>
+                        <h4 class="text-lg font-semibold text-pink-400 mb-2">2. Reverse</h4>
+                        <p class="text-sm text-gray-300">Engenharia Reversa</p>
+                    </div>
+                    <div class="card p-6 rounded-lg text-center hover:scale-105 transition-transform border-2 border-indigo-500/30">
+                        <i class="fas fa-bug text-4xl text-indigo-400 mb-4"></i>
+                        <h4 class="text-lg font-semibold text-indigo-400 mb-2">3. Testing</h4>
+                        <p class="text-sm text-gray-300">Teste de Segurança</p>
+                    </div>
+                    <div class="card p-6 rounded-lg text-center hover:scale-105 transition-transform border-2 border-green-500/30">
+                        <i class="fas fa-lock text-4xl text-green-400 mb-4"></i>
+                        <h4 class="text-lg font-semibold text-green-400 mb-2">4. Protection</h4>
+                        <p class="text-sm text-gray-300">Proteção & Hardening</p>
+                    </div>
+                </div>
+
+                <!-- Detailed Mobile Phases -->
+                <div class="space-y-6">
+                    <div class="bg-gradient-to-r from-purple-900/50 to-pink-900/50 p-6 rounded-lg border border-purple-500/30">
+                        <h4 class="text-xl font-bold text-purple-300 mb-4">🔍 Fase 1: Análise e Reconhecimento de Apps</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h5 class="font-semibold text-pink-400 mb-3">🛠️ Ferramentas de Análise:</h5>
+                                <ul class="text-sm space-y-1">
+                                    <li>• <code class="bg-gray-800 px-2 py-1 rounded">apktool</code> - Decompilar APKs</li>
+                                    <li>• <code class="bg-gray-800 px-2 py-1 rounded">jadx</code> - Decompilador Java</li>
+                                    <li>• <code class="bg-gray-800 px-2 py-1 rounded">dex2jar</code> - DEX para JAR</li>
+                                    <li>• <code class="bg-gray-800 px-2 py-1 rounded">frida</code> - Dynamic analysis</li>
+                                    <li>• <code class="bg-gray-800 px-2 py-1 rounded">objection</code> - Runtime mobile exploration</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-green-400 mb-3">📊 Comandos Essenciais:</h5>
+                                <div class="space-y-3">
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-pink-400">apktool d app.apk</code><br>
+                                        <span class="text-gray-400 text-xs">Decompilar APK</span>
+                                    </div>
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-pink-400">jadx -d output app.apk</code><br>
+                                        <span class="text-gray-400 text-xs">Decompilar com JADX</span>
+                                    </div>
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-pink-400">frida-ps -U</code><br>
+                                        <span class="text-gray-400 text-xs">Listar processos no dispositivo</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-pink-900/50 to-indigo-900/50 p-6 rounded-lg border border-pink-500/30">
+                        <h4 class="text-xl font-bold text-pink-300 mb-4">🔧 Fase 2: Engenharia Reversa e Análise Estática</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h5 class="font-semibold text-indigo-400 mb-3">🎯 Técnicas Principais:</h5>
+                                <ul class="text-sm space-y-2">
+                                    <li><strong>Manifest Analysis:</strong> Permissões e componentes</li>
+                                    <li><strong>Code Review:</strong> Análise de vulnerabilidades</li>
+                                    <li><strong>Certificate Pinning:</strong> Bypass de pinning SSL</li>
+                                    <li><strong>Obfuscation:</strong> Técnicas anti-reversing</li>
+                                    <li><strong>API Analysis:</strong> Endpoints e comunicação</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-red-400 mb-3">⚡ Ataques Comuns:</h5>
+                                <div class="space-y-3">
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-red-400">grep -r "api_key\|secret" decompiled/</code><br>
+                                        <span class="text-gray-400 text-xs">Buscar chaves hardcoded</span>
+                                    </div>
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-red-400">strings app.apk | grep -i password</code><br>
+                                        <span class="text-gray-400 text-xs">Buscar strings suspeitas</span>
+                                    </div>
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-red-400">frida -U -l script.js com.app.package</code><br>
+                                        <span class="text-gray-400 text-xs">Hook runtime com Frida</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-indigo-900/50 to-blue-900/50 p-6 rounded-lg border border-indigo-500/30">
+                        <h4 class="text-xl font-bold text-indigo-300 mb-4">🧪 Fase 3: Teste Dinâmico e Pentesting Mobile</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h5 class="font-semibold text-blue-400 mb-3">📱 Testes de Segurança:</h5>
+                                <ul class="text-sm space-y-2">
+                                    <li><strong>Network Interception:</strong> MITM com Burp/ZAP</li>
+                                    <li><strong>Root Detection:</strong> Bypass de detecção de root</li>
+                                    <li><strong>Jailbreak Detection:</strong> Bypass iOS jailbreak</li>
+                                    <li><strong>Biometric Bypass:</strong> Ataques a autenticação</li>
+                                    <li><strong>Runtime Manipulation:</strong> Modificação em tempo real</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-yellow-400 mb-3">🔧 Ferramentas de Teste:</h5>
+                                <div class="space-y-3">
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-yellow-400">mitmproxy --mode transparent</code><br>
+                                        <span class="text-gray-400 text-xs">Interceptar tráfego HTTPS</span>
+                                    </div>
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-yellow-400">drozer console connect</code><br>
+                                        <span class="text-gray-400 text-xs">Teste de segurança Android</span>
+                                    </div>
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-yellow-400">needle</code><br>
+                                        <span class="text-gray-400 text-xs">Pentesting iOS</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-green-900/50 to-teal-900/50 p-6 rounded-lg border border-green-500/30">
+                        <h4 class="text-xl font-bold text-green-300 mb-4">🛡️ Fase 4: Proteção e Hardening Mobile</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h5 class="font-semibold text-teal-400 mb-3">🔒 Boas Práticas:</h5>
+                                <ul class="text-sm space-y-2">
+                                    <li><strong>Code Obfuscation:</strong> ProGuard/R8 para Android</li>
+                                    <li><strong>Certificate Pinning:</strong> Implementar pinning SSL</li>
+                                    <li><strong>Root Detection:</strong> Detectar dispositivos rooted</li>
+                                    <li><strong>Anti-Tampering:</strong> Proteção contra modificações</li>
+                                    <li><strong>Secure Storage:</strong> KeyStore/Keystore iOS</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-orange-400 mb-3">⚠️ Riscos Críticos:</h5>
+                                <div class="space-y-3">
+                                    <div class="bg-red-900/30 p-3 rounded border-l-4 border-red-500">
+                                        <strong>Hardcoded Secrets:</strong> 70% dos apps têm chaves expostas
+                                    </div>
+                                    <div class="bg-orange-900/30 p-3 rounded border-l-4 border-orange-500">
+                                        <strong>Weak Encryption:</strong> Uso inadequado de criptografia
+                                    </div>
+                                    <div class="bg-yellow-900/30 p-3 rounded border-l-4 border-yellow-500">
+                                        <strong>Insecure Storage:</strong> Dados sensíveis em plain text
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Tools Installation -->
+            <div class="card p-8 rounded-xl mb-8">
+                <h3 class="text-2xl font-bold mb-6 flex items-center">
+                    <i class="fas fa-download mr-3 text-green-400"></i>
+                    Instalação das Ferramentas Mobile
+                </h3>
+                
+                <div class="bg-gray-800 p-6 rounded-lg mb-6">
+                    <h4 class="text-lg font-semibold text-green-400 mb-4">📦 Pacotes Essenciais:</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <h5 class="font-semibold text-pink-400 mb-2">Android Tools:</h5>
+                            <code class="block bg-gray-900 p-3 rounded text-sm mb-2">pkg install apktool</code>
+                            <code class="block bg-gray-900 p-3 rounded text-sm mb-2">pkg install dex2jar</code>
+                            <code class="block bg-gray-900 p-3 rounded text-sm mb-2">pkg install jadx</code>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold text-pink-400 mb-2">Runtime Analysis:</h5>
+                            <code class="block bg-gray-900 p-3 rounded text-sm mb-2">pkg install python</code>
+                            <code class="block bg-gray-900 p-3 rounded text-sm mb-2">pip install frida-tools</code>
+                            <code class="block bg-gray-900 p-3 rounded text-sm mb-2">pip install objection</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-900/30 border-l-4 border-yellow-500 p-4 rounded">
+                    <h4 class="text-yellow-400 font-semibold mb-2">⚠️ Requisitos para Mobile Pentesting:</h4>
+                    <ul class="text-sm text-yellow-200 space-y-1">
+                        <li>• Dispositivo Android/iOS para testes</li>
+                        <li>• ADB (Android Debug Bridge) instalado</li>
+                        <li>• USB debugging habilitado</li>
+                        <li>• Permissões de desenvolvedor</li>
+                        <li>• Root/Jailbreak opcional mas recomendado</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Practical Mobile Scenarios -->
+            <div class="card p-8 rounded-xl">
+                <h3 class="text-2xl font-bold mb-6 flex items-center">
+                    <i class="fas fa-flask mr-3 text-purple-400"></i>
+                    Cenários Práticos de Mobile Security
+                </h3>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-gradient-to-br from-purple-900/50 to-pink-900/50 p-6 rounded-lg border border-purple-500/30">
+                        <h4 class="text-xl font-bold text-purple-300 mb-4">🔍 Auditoria de App Banking</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <span class="text-pink-400 font-bold">1.</span>
+                                <div>
+                                    <strong class="text-pink-400">Reverse:</strong> Decompilar e analisar código
+                                    <code class="block bg-gray-800 p-2 rounded text-xs mt-1">jadx -d banking_app app.apk</code>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-green-400 font-bold">2.</span>
+                                <div>
+                                    <strong class="text-green-400">Test:</strong> Verificar armazenamento seguro
+                                    <code class="block bg-gray-800 p-2 rounded text-xs mt-1">frida -U -l storage_hook.js com.banking.app</code>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-yellow-400 font-bold">3.</span>
+                                <div>
+                                    <strong class="text-yellow-400">Report:</strong> Documentar vulnerabilidades encontradas
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-indigo-900/50 to-blue-900/50 p-6 rounded-lg border border-indigo-500/30">
+                        <h4 class="text-xl font-bold text-indigo-300 mb-4">🚨 Teste de API Mobile</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <span class="text-blue-400 font-bold">1.</span>
+                                <div>
+                                    <strong class="text-blue-400">Intercept:</strong> Capturar tráfego da API
+                                    <code class="block bg-gray-800 p-2 rounded text-xs mt-1">mitmproxy --mode upstream</code>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-red-400 font-bold">2.</span>
+                                <div>
+                                    <strong class="text-red-400">Exploit:</strong> Testar injeção e bypass
+                                    <code class="block bg-gray-800 p-2 rounded text-xs mt-1">sqlmap -r request.txt --batch</code>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-orange-400 font-bold">3.</span>
+                                <div>
+                                    <strong class="text-orange-400">Secure:</strong> Recomendar melhorias de segurança
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cryptography Section -->
+        <section id="cryptography" class="content-section space-y-8">
+            <div class="text-center mb-8">
+                <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-green-400 to-teal-500 bg-clip-text text-transparent">
+                    Cryptography
+                </h2>
+                <p class="text-xl text-gray-300">Criptografia Moderna - Cifras, Hashes e Certificados Digitais</p>
+            </div>
+
+            <!-- Cryptography Overview -->
+            <div class="bg-gradient-to-r from-green-900/50 to-teal-900/50 p-6 rounded-lg border border-green-500/30 mb-8">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-key text-green-400 text-2xl mr-3"></i>
+                    <h3 class="text-xl font-bold text-green-300">🔐 CRIPTOGRAFIA: A CIÊNCIA DA SEGURANÇA</h3>
+                </div>
+                <p class="text-green-200 mb-4">
+                    <strong>A criptografia é a base da segurança digital!</strong> 
+                    Sem ela, não há privacidade, autenticidade ou integridade na internet.
+                </p>
+                <p class="text-green-200">
+                    <strong>OBJETIVO:</strong> Dominar algoritmos criptográficos, 
+                    implementação prática e ataques comuns usando ferramentas no Termux.
+                </p>
+            </div>
+
+            <!-- Cryptography Framework -->
+            <div class="card p-8 rounded-xl mb-8">
+                <h3 class="text-2xl font-bold mb-6 flex items-center">
+                    <i class="fas fa-shield-alt mr-3 text-green-400"></i>
+                    Framework de Criptografia
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                    <div class="card p-6 rounded-lg text-center hover:scale-105 transition-transform border-2 border-green-500/30">
+                        <i class="fas fa-lock text-4xl text-green-400 mb-4"></i>
+                        <h4 class="text-lg font-semibold text-green-400 mb-2">1. Symmetric</h4>
+                        <p class="text-sm text-gray-300">Criptografia Simétrica</p>
+                    </div>
+                    <div class="card p-6 rounded-lg text-center hover:scale-105 transition-transform border-2 border-teal-500/30">
+                        <i class="fas fa-exchange-alt text-4xl text-teal-400 mb-4"></i>
+                        <h4 class="text-lg font-semibold text-teal-400 mb-2">2. Asymmetric</h4>
+                        <p class="text-sm text-gray-300">Criptografia Assimétrica</p>
+                    </div>
+                    <div class="card p-6 rounded-lg text-center hover:scale-105 transition-transform border-2 border-blue-500/30">
+                        <i class="fas fa-hashtag text-4xl text-blue-400 mb-4"></i>
+                        <h4 class="text-lg font-semibold text-blue-400 mb-2">3. Hashing</h4>
+                        <p class="text-sm text-gray-300">Funções Hash</p>
+                    </div>
+                    <div class="card p-6 rounded-lg text-center hover:scale-105 transition-transform border-2 border-purple-500/30">
+                        <i class="fas fa-certificate text-4xl text-purple-400 mb-4"></i>
+                        <h4 class="text-lg font-semibold text-purple-400 mb-2">4. PKI</h4>
+                        <p class="text-sm text-gray-300">Infraestrutura de Chaves</p>
+                    </div>
+                </div>
+
+                <!-- Detailed Cryptography Phases -->
+                <div class="space-y-6">
+                    <div class="bg-gradient-to-r from-green-900/50 to-teal-900/50 p-6 rounded-lg border border-green-500/30">
+                        <h4 class="text-xl font-bold text-green-300 mb-4">🔒 Fase 1: Criptografia Simétrica</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h5 class="font-semibold text-teal-400 mb-3">🛠️ Algoritmos Principais:</h5>
+                                <ul class="text-sm space-y-1">
+                                    <li>• <code class="bg-gray-800 px-2 py-1 rounded">AES</code> - Advanced Encryption Standard (128/256 bits)</li>
+                                    <li>• <code class="bg-gray-800 px-2 py-1 rounded">ChaCha20</code> - Stream cipher moderno</li>
+                                    <li>• <code class="bg-gray-800 px-2 py-1 rounded">3DES</code> - Triple DES (obsoleto)</li>
+                                    <li>• <code class="bg-gray-800 px-2 py-1 rounded">Blowfish</code> - Algoritmo flexível</li>
+                                    <li>• <code class="bg-gray-800 px-2 py-1 rounded">Twofish</code> - Sucessor do Blowfish</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-blue-400 mb-3">📊 Modos de Operação:</h5>
+                                <div class="space-y-3">
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-teal-400">openssl enc -aes-256-cbc -salt -in file.txt -out file.enc</code><br>
+                                        <span class="text-gray-400 text-xs">Criptografar com AES-CBC</span>
+                                    </div>
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-teal-400">openssl enc -aes-256-gcm -in file.txt -out file.enc</code><br>
+                                        <span class="text-gray-400 text-xs">Criptografar com AES-GCM (autenticado)</span>
+                                    </div>
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-teal-400">gpg --symmetric --cipher-algo AES256 file.txt</code><br>
+                                        <span class="text-gray-400 text-xs">Criptografar com GPG</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-teal-900/50 to-blue-900/50 p-6 rounded-lg border border-teal-500/30">
+                        <h4 class="text-xl font-bold text-teal-300 mb-4">🔄 Fase 2: Criptografia Assimétrica</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h5 class="font-semibold text-blue-400 mb-3">🎯 Algoritmos RSA & ECC:</h5>
+                                <ul class="text-sm space-y-2">
+                                    <li><strong>RSA:</strong> Baseado em fatoração (1024-4096 bits)</li>
+                                    <li><strong>ECDSA:</strong> Curvas elípticas para assinatura</li>
+                                    <li><strong>Ed25519:</strong> Curva Edwards moderna</li>
+                                    <li><strong>ECDH:</strong> Troca de chaves Diffie-Hellman</li>
+                                    <li><strong>Hybrid:</strong> Combinação simétrica/assimétrica</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-purple-400 mb-3">⚡ Geração e Uso:</h5>
+                                <div class="space-y-3">
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-purple-400">openssl genrsa -out private.pem 2048</code><br>
+                                        <span class="text-gray-400 text-xs">Gerar chave privada RSA</span>
+                                    </div>
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-purple-400">openssl rsa -in private.pem -pubout -out public.pem</code><br>
+                                        <span class="text-gray-400 text-xs">Extrair chave pública</span>
+                                    </div>
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-purple-400">ssh-keygen -t ed25519 -C "your_email@example.com"</code><br>
+                                        <span class="text-gray-400 text-xs">Gerar chave Ed25519</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-blue-900/50 to-purple-900/50 p-6 rounded-lg border border-blue-500/30">
+                        <h4 class="text-xl font-bold text-blue-300 mb-4">🔢 Fase 3: Funções Hash e Integridade</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h5 class="font-semibold text-purple-400 mb-3">📋 Funções Hash:</h5>
+                                <ul class="text-sm space-y-2">
+                                    <li><strong>SHA-256:</strong> Padrão atual (resistente a colisões)</li>
+                                    <li><strong>SHA-3:</strong> Nova família Keccak</li>
+                                    <li><strong>BLAKE2:</strong> Alternativa moderna ao SHA</li>
+                                    <li><strong>MD5:</strong> Obsoleto (vulnerável)</li>
+                                    <li><strong>HMAC:</strong> Hash com chave (autenticação)</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-red-400 mb-3">🔍 Verificação e Ataques:</h5>
+                                <div class="space-y-3">
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-red-400">sha256sum file.txt</code><br>
+                                        <span class="text-gray-400 text-xs">Calcular hash SHA-256</span>
+                                    </div>
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-red-400">openssl dgst -sha256 -hmac "secret" file.txt</code><br>
+                                        <span class="text-gray-400 text-xs">Calcular HMAC-SHA256</span>
+                                    </div>
+                                    <div class="bg-gray-800 p-3 rounded">
+                                        <code class="text-red-400">hashcat -m 0 -a 0 hash.txt wordlist.txt</code><br>
+                                        <span class="text-gray-400 text-xs">Crack hash MD5</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-purple-900/50 to-pink-900/50 p-6 rounded-lg border border-purple-500/30">
+                        <h4 class="text-xl font-bold text-purple-300 mb-4">📜 Fase 4: PKI e Certificados Digitais</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h5 class="font-semibold text-pink-400 mb-3">🔐 Componentes PKI:</h5>
+                                <ul class="text-sm space-y-2">
+                                    <li><strong>CA (Certificate Authority):</strong> Emite certificados</li>
+                                    <li><strong>CSR (Certificate Signing Request):</strong> Solicitação</li>
+                                    <li><strong>CRL (Certificate Revocation List):</strong> Lista de revogação</li>
+                                    <li><strong>OCSP:</strong> Verificação online de status</li>
+                                    <li><strong>HSTS:</strong> HTTP Strict Transport Security</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-orange-400 mb-3">⚠️ Ataques e Vulnerabilidades:</h5>
+                                <div class="space-y-3">
+                                    <div class="bg-red-900/30 p-3 rounded border-l-4 border-red-500">
+                                        <strong>Heartbleed:</strong> Buffer overflow no OpenSSL
+                                    </div>
+                                    <div class="bg-orange-900/30 p-3 rounded border-l-4 border-orange-500">
+                                        <strong>POODLE:</strong> Ataque ao SSLv3
+                                    </div>
+                                    <div class="bg-yellow-900/30 p-3 rounded border-l-4 border-yellow-500">
+                                        <strong>Certificate Pinning Bypass:</strong> Ataques a pinning
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cryptography Tools Installation -->
+            <div class="card p-8 rounded-xl mb-8">
+                <h3 class="text-2xl font-bold mb-6 flex items-center">
+                    <i class="fas fa-download mr-3 text-green-400"></i>
+                    Instalação das Ferramentas de Criptografia
+                </h3>
+                
+                <div class="bg-gray-800 p-6 rounded-lg mb-6">
+                    <h4 class="text-lg font-semibold text-green-400 mb-4">📦 Pacotes Essenciais:</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <h5 class="font-semibold text-teal-400 mb-2">OpenSSL Suite:</h5>
+                            <code class="block bg-gray-900 p-3 rounded text-sm mb-2">pkg install openssl</code>
+                            <code class="block bg-gray-900 p-3 rounded text-sm mb-2">pkg install openssl-tool</code>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold text-teal-400 mb-2">Hash & Crypto Tools:</h5>
+                            <code class="block bg-gray-900 p-3 rounded text-sm mb-2">pkg install hashcat</code>
+                            <code class="block bg-gray-900 p-3 rounded text-sm mb-2">pkg install john</code>
+                            <code class="block bg-gray-900 p-3 rounded text-sm mb-2">pkg install gpg</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-900/30 border-l-4 border-yellow-500 p-4 rounded">
+                    <h4 class="text-yellow-400 font-semibold mb-2">⚠️ Práticas de Segurança:</h4>
+                    <ul class="text-sm text-yellow-200 space-y-1">
+                        <li>• Use sempre algoritmos modernos (AES-256, SHA-256, Ed25519)</li>
+                        <li>• Evite algoritmos obsoletos (DES, MD5, RC4)</li>
+                        <li>• Implemente perfect forward secrecy (ECDHE)</li>
+                        <li>• Use certificados válidos e atualizados</li>
+                        <li>• Monitore vulnerabilidades em bibliotecas criptográficas</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Practical Cryptography Scenarios -->
+            <div class="card p-8 rounded-xl">
+                <h3 class="text-2xl font-bold mb-6 flex items-center">
+                    <i class="fas fa-flask mr-3 text-green-400"></i>
+                    Cenários Práticos de Criptografia
+                </h3>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-gradient-to-br from-green-900/50 to-teal-900/50 p-6 rounded-lg border border-green-500/30">
+                        <h4 class="text-xl font-bold text-green-300 mb-4">🔐 Criptografia de Arquivos Sensíveis</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <span class="text-teal-400 font-bold">1.</span>
+                                <div>
+                                    <strong class="text-teal-400">Encrypt:</strong> Criptografar arquivo com AES
+                                    <code class="block bg-gray-800 p-2 rounded text-xs mt-1">openssl enc -aes-256-gcm -salt -in secret.txt -out secret.enc</code>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-blue-400 font-bold">2.</span>
+                                <div>
+                                    <strong class="text-blue-400">Verify:</strong> Calcular e verificar hash
+                                    <code class="block bg-gray-800 p-2 rounded text-xs mt-1">sha256sum secret.txt > secret.sha256</code>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-purple-400 font-bold">3.</span>
+                                <div>
+                                    <strong class="text-purple-400">Decrypt:</strong> Descriptografar quando necessário
+                                    <code class="block bg-gray-800 p-2 rounded text-xs mt-1">openssl enc -d -aes-256-gcm -in secret.enc -out secret.txt</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-teal-900/50 to-blue-900/50 p-6 rounded-lg border border-teal-500/30">
+                        <h4 class="text-xl font-bold text-teal-300 mb-4">🔓 Análise de Certificados SSL/TLS</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <span class="text-blue-400 font-bold">1.</span>
+                                <div>
+                                    <strong class="text-blue-400">Inspect:</strong> Examinar certificado do site
+                                    <code class="block bg-gray-800 p-2 rounded text-xs mt-1">openssl s_client -connect example.com:443 -servername example.com</code>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-red-400 font-bold">2.</span>
+                                <div>
+                                    <strong class="text-red-400">Test:</strong> Verificar vulnerabilidades SSL
+                                    <code class="block bg-gray-800 p-2 rounded text-xs mt-1">sslscan example.com</code>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-orange-400 font-bold">3.</span>
+                                <div>
+                                    <strong class="text-orange-400">Report:</strong> Documentar configurações de segurança
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
