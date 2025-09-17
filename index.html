@@ -427,6 +427,172 @@
             from, to { border-color: transparent; }
             50% { border-color: var(--accent); }
         }
+
+        /* SiteBook Chapter Styles */
+        .chapter-section {
+            margin-bottom: 24px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+        }
+
+        .chapter-header {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(102, 126, 234, 0.1) 100%);
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chapter-number {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--accent);
+            background: rgba(0, 217, 255, 0.2);
+            padding: 4px 8px;
+            border-radius: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .chapter-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .chapter-links {
+            padding: 8px 0;
+        }
+
+        .chapter-links .nav-link {
+            margin: 2px 16px;
+            padding: 8px 12px;
+            font-size: 13px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .chapter-links .nav-link:hover {
+            background: rgba(0, 217, 255, 0.15);
+            transform: translateX(2px);
+        }
+
+        .chapter-links .nav-link.active {
+            background: rgba(0, 217, 255, 0.2);
+            border-left-color: var(--accent);
+            transform: translateX(2px);
+        }
+
+        .nav-number {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-right: 8px;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .chapter-links .nav-link span:last-child {
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .chapter-links .nav-link.active span:last-child {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Reading Mode Styles */
+        .reading-mode .sidebar {
+            width: 60px !important;
+            transition: width 0.3s ease;
+        }
+
+        .reading-mode .sidebar .text-center,
+        .reading-mode .sidebar .search-container,
+        .reading-mode .sidebar .bg-gray-800,
+        .reading-mode .sidebar .chapter-title,
+        .reading-mode .sidebar .nav-link span:last-child {
+            display: none;
+        }
+
+        .reading-mode .sidebar .chapter-header {
+            justify-content: center;
+            padding: 12px 8px;
+        }
+
+        .reading-mode .sidebar .chapter-number {
+            font-size: 8px;
+            padding: 2px 6px;
+        }
+
+        .reading-mode .sidebar .nav-number {
+            display: block;
+            margin: 0;
+            font-size: 10px;
+        }
+
+        .reading-mode .sidebar .nav-link {
+            justify-content: center;
+            padding: 8px;
+            margin: 2px 8px;
+        }
+
+        .reading-mode .main-content {
+            margin-left: 60px;
+        }
+
+        /* Navigation Controls */
+        .sitebook-nav {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow-lg);
+            z-index: 100;
+        }
+
+        .nav-btn {
+            background: var(--bg-tertiary);
+            border: none;
+            color: var(--text-secondary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent);
+            color: var(--bg-main);
+            transform: scale(1.1);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .nav-btn:disabled:hover {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen bg-pattern">
@@ -450,7 +616,21 @@
     <div class="floating-action" onclick="scrollToTop()">
         <i class="fas fa-rocket"></i>
     </div>
-    
+
+    <!-- SiteBook Navigation Controls -->
+    <div class="sitebook-nav" id="sitebookNav" style="display: none;">
+        <button id="navPrevBtn" class="nav-btn" title="Capítulo Anterior">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <span class="text-xs text-gray-400 px-2" id="navChapterIndicator">1/20</span>
+        <button id="navNextBtn" class="nav-btn" title="Próximo Capítulo">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <button id="exitReadingModeBtn" class="nav-btn bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-xs ml-4 transition-colors" title="Sair do Modo Leitura">
+            <i class="fas fa-times"></i> Sair
+        </button>
+    </div>
+
     <!-- Notification Toast -->
     <div class="notification" id="notification">
         <span id="notificationText"></span>
@@ -483,7 +663,7 @@
         <!-- Progress Indicator -->
         <div class="bg-gray-800 p-4 rounded-lg mb-6">
             <div class="flex items-center justify-between mb-2">
-                <span class="text-sm text-gray-300">Progresso do Curso</span>
+                <span class="text-sm text-gray-300">Progresso do Livro</span>
                 <span class="text-sm text-cyan-400" id="progressText">0%</span>
             </div>
             <div class="w-full bg-gray-700 rounded-full h-2">
@@ -491,114 +671,208 @@
                      id="progressBar" style="width: 0%"></div>
             </div>
         </div>
+
+        <!-- SiteBook Controls -->
+        <div class="bg-gray-800 p-4 rounded-lg mb-6">
+            <div class="flex items-center justify-between mb-3">
+                <span class="text-sm text-gray-300 font-semibold">📖 Modo SiteBook</span>
+                <div class="flex space-x-2">
+                    <button id="readingModeBtn" class="bg-cyan-600 hover:bg-cyan-700 text-white px-3 py-1 rounded text-xs transition-colors" title="Modo Leitura">
+                        <i class="fas fa-book"></i>
+                    </button>
+                    <button id="exportBtn" class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-xs transition-colors" title="Exportar Conteúdo">
+                        <i class="fas fa-download"></i>
+                    </button>
+                    <button id="indexBtn" class="bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded text-xs transition-colors" title="Mostrar/Ocultar Índice">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="flex items-center justify-between">
+                <button id="prevChapterBtn" class="nav-btn" title="Capítulo Anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <span class="text-xs text-gray-400 px-3" id="chapterIndicator">1/20</span>
+                <button id="nextChapterBtn" class="nav-btn" title="Próximo Capítulo">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
         
         <!-- Navigation Menu -->
         <nav class="space-y-2">
-            <div class="text-xs uppercase tracking-wider text-gray-400 font-semibold mb-3">Fundamentos</div>
-            <a href="#" class="nav-link active flex items-center py-3 px-4 rounded-lg transition-all duration-300" data-target="intro">
-                <i class="fas fa-home mr-3 text-cyan-400"></i>
-                <span>Introdução</span>
-            </a>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="setup">
-                <i class="fas fa-cog mr-3"></i>
-                <span>Configuração Inicial</span>
-            </a>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="basics">
-                <i class="fas fa-terminal mr-3"></i>
-                <span>Comandos Linux</span>
-            </a>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="environment">
-                <i class="fas fa-layer-group mr-3"></i>
-                <span>Ambiente de Desenvolvimento</span>
-            </a>
+            <div class="flex items-center justify-between mb-3">
+                <span class="text-xs uppercase tracking-wider text-gray-400 font-semibold">Índice do Livro</span>
+                <button id="toggleIndexBtn" class="text-gray-400 hover:text-gray-300 text-sm">
+                    <i class="fas fa-chevron-up"></i>
+                </button>
+            </div>
             
-            <div class="text-xs uppercase tracking-wider text-gray-400 font-semibold mt-6 mb-3">Reconnaissance</div>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="recon">
-                <i class="fas fa-search mr-3"></i>
-                <span>Reconhecimento Passivo</span>
-            </a>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="osint">
-                <i class="fas fa-eye mr-3"></i>
-                <span>OSINT Avançado</span>
-            </a>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="social">
-                <i class="fas fa-users mr-3"></i>
-                <span>Social Engineering</span>
-            </a>
-            
-            <div class="text-xs uppercase tracking-wider text-gray-400 font-semibold mt-6 mb-3">Scanning & Analysis</div>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="scan">
-                <i class="fas fa-radar mr-3"></i>
-                <span>Network Scanning</span>
-            </a>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="vuln">
-                <i class="fas fa-bug mr-3"></i>
-                <span>Vulnerability Assessment</span>
-            </a>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="web">
-                <i class="fas fa-globe mr-3"></i>
-                <span>Web Application Testing</span>
-            </a>
-            
-            <div class="text-xs uppercase tracking-wider text-gray-400 font-semibold mt-6 mb-3">Exploitation</div>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="exploit">
-                <i class="fas fa-crosshairs mr-3"></i>
-                <span>Exploitation Frameworks</span>
-            </a>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="payload">
-                <i class="fas fa-bomb mr-3"></i>
-                <span>Payload Generation</span>
-            </a>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="post">
-                <i class="fas fa-key mr-3"></i>
-                <span>Post-Exploitation</span>
-            </a>
-            
-            <div class="text-xs uppercase tracking-wider text-gray-400 font-semibold mt-6 mb-3">Defense & Forensics</div>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="defense">
-                <i class="fas fa-shield-alt mr-3"></i>
-                <span>Defesa e Monitoramento</span>
-            </a>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="forensics">
-                <i class="fas fa-microscope mr-3"></i>
-                <span>Digital Forensics</span>
-            </a>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="incident">
-                <i class="fas fa-exclamation-triangle mr-3"></i>
-                <span>Incident Response</span>
-            </a>
-            
-            <div class="text-xs uppercase tracking-wider text-gray-400 font-semibold mt-6 mb-3">Advanced Topics</div>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="wireless">
-                <i class="fas fa-wifi mr-3"></i>
-                <span>Wireless Security</span>
-            </a>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="mobile">
-                <i class="fas fa-mobile-alt mr-3"></i>
-                <span>Mobile Security</span>
-            </a>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="cryptography">
-                <i class="fas fa-lock mr-3"></i>
-                <span>Cryptography</span>
-            </a>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="automation">
-                <i class="fas fa-robot mr-3"></i>
-                <span>Automation & Scripting</span>
-            </a>
-            
-            <div class="text-xs uppercase tracking-wider text-gray-400 font-semibold mt-6 mb-3">Career & Ethics</div>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="career">
-                <i class="fas fa-briefcase mr-3"></i>
-                <span>Carreira em CyberSec</span>
-            </a>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="legal">
-                <i class="fas fa-balance-scale mr-3"></i>
-                <span>Ética e Aspectos Legais</span>
-            </a>
-            <a href="#" class="nav-link flex items-center py-3 px-4 rounded-lg" data-target="resources">
-                <i class="fas fa-book mr-3"></i>
-                <span>Recursos e Labs</span>
-            </a>
+            <div id="indexContent">
+                <!-- Capítulo 1: Fundamentos -->
+                <div class="chapter-section">
+                    <div class="chapter-header">
+                        <span class="chapter-number">CAPÍTULO 1</span>
+                        <span class="chapter-title">FUNDAMENTOS</span>
+                    </div>
+                    <div class="chapter-links">
+                        <a href="#" class="nav-link active flex items-center py-2 px-3 rounded-lg" data-target="intro">
+                            <span class="nav-number">1.1</span>
+                            <span>Introdução ao Termux Academy</span>
+                        </a>
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="setup">
+                            <span class="nav-number">1.2</span>
+                            <span>Configuração Inicial</span>
+                        </a>
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="basics">
+                            <span class="nav-number">1.3</span>
+                            <span>Comandos Linux Essenciais</span>
+                        </a>
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="environment">
+                            <span class="nav-number">1.4</span>
+                            <span>Ambiente de Desenvolvimento</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Capítulo 2: Reconhecimento -->
+                <div class="chapter-section">
+                    <div class="chapter-header">
+                        <span class="chapter-number">CAPÍTULO 2</span>
+                        <span class="chapter-title">RECONHECIMENTO</span>
+                    </div>
+                    <div class="chapter-links">
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="recon">
+                            <span class="nav-number">2.1</span>
+                            <span>Reconhecimento Passivo</span>
+                        </a>
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="osint">
+                            <span class="nav-number">2.2</span>
+                            <span>OSINT Avançado</span>
+                        </a>
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="social">
+                            <span class="nav-number">2.3</span>
+                            <span>Social Engineering</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Capítulo 3: Scanning & Análise -->
+                <div class="chapter-section">
+                    <div class="chapter-header">
+                        <span class="chapter-number">CAPÍTULO 3</span>
+                        <span class="chapter-title">SCANNING & ANÁLISE</span>
+                    </div>
+                    <div class="chapter-links">
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="scan">
+                            <span class="nav-number">3.1</span>
+                            <span>Network Scanning</span>
+                        </a>
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="vuln">
+                            <span class="nav-number">3.2</span>
+                            <span>Vulnerability Assessment</span>
+                        </a>
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="web">
+                            <span class="nav-number">3.3</span>
+                            <span>Web Application Testing</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Capítulo 4: Exploitation -->
+                <div class="chapter-section">
+                    <div class="chapter-header">
+                        <span class="chapter-number">CAPÍTULO 4</span>
+                        <span class="chapter-title">EXPLOITATION</span>
+                    </div>
+                    <div class="chapter-links">
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="exploit">
+                            <span class="nav-number">4.1</span>
+                            <span>Exploitation Frameworks</span>
+                        </a>
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="payload">
+                            <span class="nav-number">4.2</span>
+                            <span>Payload Generation</span>
+                        </a>
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="post">
+                            <span class="nav-number">4.3</span>
+                            <span>Post-Exploitation</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Capítulo 5: Defesa & Forense -->
+                <div class="chapter-section">
+                    <div class="chapter-header">
+                        <span class="chapter-number">CAPÍTULO 5</span>
+                        <span class="chapter-title">DEFESA & FORENSE</span>
+                    </div>
+                    <div class="chapter-links">
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="defense">
+                            <span class="nav-number">5.1</span>
+                            <span>Defesa e Monitoramento</span>
+                        </a>
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="forensics">
+                            <span class="nav-number">5.2</span>
+                            <span>Digital Forensics</span>
+                        </a>
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="incident">
+                            <span class="nav-number">5.3</span>
+                            <span>Incident Response</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Capítulo 6: Tópicos Avançados -->
+                <div class="chapter-section">
+                    <div class="chapter-header">
+                        <span class="chapter-number">CAPÍTULO 6</span>
+                        <span class="chapter-title">TÓPICOS AVANÇADOS</span>
+                    </div>
+                    <div class="chapter-links">
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="wireless">
+                            <span class="nav-number">6.1</span>
+                            <span>Wireless Security</span>
+                        </a>
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="mobile">
+                            <span class="nav-number">6.2</span>
+                            <span>Mobile Security</span>
+                        </a>
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="cryptography">
+                            <span class="nav-number">6.3</span>
+                            <span>Cryptography</span>
+                        </a>
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="automation">
+                            <span class="nav-number">6.4</span>
+                            <span>Automation & Scripting</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Capítulo 7: Carreira & Ética -->
+                <div class="chapter-section">
+                    <div class="chapter-header">
+                        <span class="chapter-number">CAPÍTULO 7</span>
+                        <span class="chapter-title">CARREIRA & ÉTICA</span>
+                    </div>
+                    <div class="chapter-links">
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="career">
+                            <span class="nav-number">7.1</span>
+                            <span>Carreira em CyberSec</span>
+                        </a>
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="legal">
+                            <span class="nav-number">7.2</span>
+                            <span>Ética e Aspectos Legais</span>
+                        </a>
+                        <a href="#" class="nav-link flex items-center py-2 px-3 rounded-lg" data-target="resources">
+                            <span class="nav-number">7.3</span>
+                            <span>Recursos e Labs</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </nav>
         
         <!-- Footer -->
@@ -8055,6 +8329,349 @@ GET /winlogbeat-*/_search
                 soundButton.style.borderColor = 'rgba(255,255,255,0.3)';
             });
         }
+
+        // ==========================================
+        // SiteBook Manager - Modo Leitura e Exportação
+        // ==========================================
+        // Classe responsável por gerenciar o modo de leitura estilo livro
+        // e a funcionalidade de exportação como revista digital
+        class SiteBookManager {
+            constructor() {
+                this.isReadingMode = false;        // Estado do modo leitura
+                this.currentChapterIndex = 0;      // Capítulo atual no modo leitura
+                this.chapters = this.getChapters(); // Lista de capítulos disponíveis
+                this.init();                        // Inicializa todos os componentes
+            }
+
+            // ==========================================
+            // Inicialização
+            // ==========================================
+            init() {
+                this.setupSiteBookControls();    // Configura botões principais
+                this.setupNavigationControls();  // Configura controles de navegação
+                this.setupReadingMode();         // Configura modo leitura
+                this.updateNavigationButtons();  // Atualiza estado dos botões
+            }
+
+            getChapters() {
+                // Get all navigation links in order
+                const navLinks = document.querySelectorAll('.nav-link[data-target]');
+                return Array.from(navLinks).map(link => ({
+                    id: link.dataset.target,
+                    title: link.querySelector('span:last-child')?.textContent || link.textContent,
+                    element: link
+                }));
+            }
+
+            // ==========================================
+            // Configuração de Controles
+            // ==========================================
+
+            // Configura os botões principais: modo leitura, exportar e sair
+            setupSiteBookControls() {
+                const readingModeBtn = document.getElementById('readingModeBtn');
+                const exportBtn = document.getElementById('exportBtn');
+                const exitReadingModeBtn = document.getElementById('exitReadingModeBtn');
+
+                if (readingModeBtn) {
+                    readingModeBtn.addEventListener('click', () => {
+                        alert('Botão Modo Leitura clicado!');
+                        this.toggleReadingMode();
+                    });
+                }
+
+                if (exportBtn) {
+                    exportBtn.addEventListener('click', () => {
+                        this.exportContent();
+                    });
+                }
+
+                if (exitReadingModeBtn) {
+                    exitReadingModeBtn.addEventListener('click', () => {
+                        this.toggleReadingMode();
+                    });
+                }
+            }
+
+            // Configura controles de navegação entre capítulos
+            setupNavigationControls() {
+                const prevBtn = document.getElementById('prevChapterBtn');
+                const nextBtn = document.getElementById('nextChapterBtn');
+                const indexBtn = document.getElementById('indexBtn');
+                const navPrevBtn = document.getElementById('navPrevBtn');
+                const navNextBtn = document.getElementById('navNextBtn');
+
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        this.navigateToPrevious();
+                    });
+                }
+
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', () => {
+                        this.navigateToNext();
+                    });
+                }
+
+                if (indexBtn) {
+                    indexBtn.addEventListener('click', () => {
+                        this.toggleIndex();
+                    });
+                }
+
+                if (navPrevBtn) {
+                    navPrevBtn.addEventListener('click', () => {
+                        this.navigateToPrevious();
+                    });
+                }
+
+                if (navNextBtn) {
+                    navNextBtn.addEventListener('click', () => {
+                        this.navigateToNext();
+                    });
+                }
+
+                // Keyboard navigation
+                this.setupKeyboardNavigation();
+            }
+
+            setupKeyboardNavigation() {
+                document.addEventListener('keydown', (e) => {
+                    // Only enable keyboard navigation in reading mode
+                    if (!this.isReadingMode) return;
+
+                    if (e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        this.navigateToPrevious();
+                    } else if (e.key === 'ArrowRight') {
+                        e.preventDefault();
+                        this.navigateToNext();
+                    } else if (e.key === 'Escape') {
+                        // Exit reading mode with Escape key
+                        e.preventDefault();
+                        this.toggleReadingMode();
+                    }
+                });
+            }
+
+            toggleReadingMode() {
+                this.isReadingMode = !this.isReadingMode;
+                const body = document.body;
+                const readingModeBtn = document.getElementById('readingModeBtn');
+                const sitebookNav = document.getElementById('sitebookNav');
+
+                if (this.isReadingMode) {
+                    body.classList.add('reading-mode');
+                    readingModeBtn.innerHTML = '<i class="fas fa-book-open"></i>';
+                    readingModeBtn.title = 'Sair do Modo Leitura';
+                    if (sitebookNav) sitebookNav.style.display = 'flex';
+                    this.showNotification('Modo leitura ativado - Use as setas para navegar', 'success');
+                } else {
+                    body.classList.remove('reading-mode');
+                    readingModeBtn.innerHTML = '<i class="fas fa-book"></i>';
+                    readingModeBtn.title = 'Modo Leitura';
+                    if (sitebookNav) sitebookNav.style.display = 'none';
+                    this.showNotification('Modo leitura desativado', 'info');
+                }
+            }
+
+            navigateToPrevious() {
+                if (this.currentChapterIndex > 0) {
+                    this.currentChapterIndex--;
+                    this.navigateToChapter(this.currentChapterIndex);
+                }
+            }
+
+            navigateToNext() {
+                if (this.currentChapterIndex < this.chapters.length - 1) {
+                    this.currentChapterIndex++;
+                    this.navigateToChapter(this.currentChapterIndex);
+                }
+            }
+
+            navigateToChapter(index) {
+                if (index >= 0 && index < this.chapters.length) {
+                    const chapter = this.chapters[index];
+                    if (window.termuxApp) {
+                        window.termuxApp.showSection(chapter.id);
+                    }
+                    this.updateNavigationButtons();
+                    this.showNotification(`Capítulo ${index + 1}: ${chapter.title}`, 'info');
+                }
+            }
+
+            updateNavigationButtons() {
+                const prevBtn = document.getElementById('prevChapterBtn');
+                const nextBtn = document.getElementById('nextChapterBtn');
+                const chapterIndicator = document.getElementById('chapterIndicator');
+                const navPrevBtn = document.getElementById('navPrevBtn');
+                const navNextBtn = document.getElementById('navNextBtn');
+                const navChapterIndicator = document.getElementById('navChapterIndicator');
+
+                if (prevBtn) {
+                    prevBtn.disabled = this.currentChapterIndex === 0;
+                }
+
+                if (nextBtn) {
+                    nextBtn.disabled = this.currentChapterIndex === this.chapters.length - 1;
+                }
+
+                if (navPrevBtn) {
+                    navPrevBtn.disabled = this.currentChapterIndex === 0;
+                }
+
+                if (navNextBtn) {
+                    navNextBtn.disabled = this.currentChapterIndex === this.chapters.length - 1;
+                }
+
+                if (chapterIndicator) {
+                    chapterIndicator.textContent = `${this.currentChapterIndex + 1}/${this.chapters.length}`;
+                }
+
+                if (navChapterIndicator) {
+                    navChapterIndicator.textContent = `${this.currentChapterIndex + 1}/${this.chapters.length}`;
+                }
+            }
+
+            toggleIndex() {
+                const sidebar = document.querySelector('.sidebar');
+                const indexBtn = document.getElementById('indexBtn');
+
+                if (sidebar) {
+                    const isCollapsed = sidebar.classList.contains('index-collapsed');
+                    if (isCollapsed) {
+                        sidebar.classList.remove('index-collapsed');
+                        indexBtn.innerHTML = '<i class="fas fa-list"></i>';
+                        indexBtn.title = 'Ocultar Índice';
+                    } else {
+                        sidebar.classList.add('index-collapsed');
+                        indexBtn.innerHTML = '<i class="fas fa-list-ul"></i>';
+                        indexBtn.title = 'Mostrar Índice';
+                    }
+                }
+            }
+
+            exportContent() {
+                // Obter o conteúdo atual
+                const mainContent = document.querySelector('.main-content');
+                const contentHTML = mainContent ? mainContent.innerHTML : document.body.innerHTML;
+
+                // HTML profissional da revista digital
+                const revistaHTML = '<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Termux Academy - Revista Digital</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><style>' +
+                ':root{--bg-primary:#0a0e13;--bg-secondary:#1a1f2e;--bg-tertiary:#252b3b;--bg-accent:#2a3441;--accent:#00d9ff;--accent-hover:#00bce6;--accent-light:#33e6ff;--text-primary:#e5e7eb;--text-secondary:#9ca3af;--text-muted:#6b7280;--border-color:#374151;--shadow:0 10px 30px rgba(0,0,0,0.5);--shadow-lg:0 20px 40px rgba(0,0,0,0.6);--shadow-xl:0 25px 50px rgba(0,0,0,0.7);--gradient-primary:linear-gradient(135deg,var(--bg-primary) 0%,#0f1419 50%,var(--bg-primary) 100%);--gradient-accent:linear-gradient(135deg,var(--accent),var(--accent-hover));--gradient-secondary:linear-gradient(135deg,var(--bg-secondary),var(--bg-tertiary));}' +
+                '*{box-sizing:border-box;margin:0;padding:0;}' +
+                'body{background:var(--gradient-primary);color:var(--text-primary);font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.7;min-height:100vh;padding:30px;position:relative;}' +
+                'body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 20% 80%,rgba(0,217,255,0.1) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(0,188,230,0.1) 0%,transparent 50%);pointer-events:none;z-index:-1;}' +
+                '.revista-container{max-width:1300px;margin:0 auto;background:var(--gradient-secondary);border-radius:25px;padding:50px;border:1px solid var(--border-color);box-shadow:var(--shadow-xl);position:relative;overflow:hidden;}' +
+                '.revista-container::before{content:"";position:absolute;top:0;left:0;right:0;height:8px;background:var(--gradient-accent);}' +
+                '.revista-container::after{content:"";position:absolute;bottom:0;left:0;right:0;height:8px;background:var(--gradient-accent);}' +
+                '.revista-container::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;border:2px solid transparent;border-radius:25px;background:linear-gradient(135deg,var(--bg-secondary),var(--bg-tertiary)) padding-box,linear-gradient(135deg,var(--accent),var(--accent-hover)) border-box;}' +
+                '.revista-header{text-align:center;border-bottom:4px solid var(--accent);padding-bottom:50px;margin-bottom:60px;position:relative;background:linear-gradient(135deg,rgba(0,217,255,0.05),rgba(0,188,230,0.05));border-radius:15px;padding:30px;margin-bottom:60px;}' +
+                '.revista-header::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(45deg,transparent 30%,rgba(0,217,255,0.03) 50%,transparent 70%);border-radius:15px;}' +
+                '.revista-header h1{color:var(--accent);font-size:4em;font-weight:900;margin:0;text-shadow:0 4px 8px rgba(0,0,0,0.4),0 0 20px rgba(0,217,255,0.3);letter-spacing:-2px;line-height:1;background:linear-gradient(135deg,var(--accent),var(--accent-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;position:relative;}' +
+                '.revista-header h1::after{content:"";position:absolute;-bottom:10px;left:50%;transform:translateX(-50%);width:200px;height:4px;background:var(--gradient-accent);border-radius:2px;}' +
+                '.revista-header .subtitle{color:var(--text-secondary);font-size:1.4em;margin:20px 0 0 0;font-weight:300;opacity:0.9;text-shadow:0 1px 2px rgba(0,0,0,0.3);position:relative;}' +
+                '.revista-header .subtitle::before{content:"\\"";color:var(--accent);font-size:2em;margin-right:10px;opacity:0.6;}' +
+                '.revista-header .subtitle::after{content:"\\"";color:var(--accent);font-size:2em;margin-left:10px;opacity:0.6;}' +
+                '.revista-content{column-count:2;column-gap:70px;column-rule:3px solid var(--accent);column-fill:balance;orphans:4;widows:4;padding:20px 0;}' +
+                '.revista-nav{position:fixed;bottom:50px;left:50%;transform:translateX(-50%);background:var(--bg-tertiary);border:3px solid var(--border-color);border-radius:40px;padding:25px 35px;display:flex;align-items:center;gap:35px;box-shadow:var(--shadow-lg);backdrop-filter:blur(20px);z-index:1000;border-image:linear-gradient(135deg,var(--accent),var(--accent-hover)) 1;}' +
+                '.nav-btn{background:var(--gradient-accent);color:var(--bg-primary);border:none;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.4s ease;font-size:22px;box-shadow:0 6px 20px rgba(0,217,255,0.4);position:relative;overflow:hidden;}' +
+                '.nav-btn::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,var(--accent-hover),var(--accent));opacity:0;transition:opacity 0.4s ease;}' +
+                '.nav-btn:hover::before{opacity:1;}' +
+                '.nav-btn:hover{transform:scale(1.15);box-shadow:0 8px 25px rgba(0,217,255,0.6);}' +
+                '.nav-btn:active{transform:scale(0.95);}' +
+                '.nav-btn i{position:relative;z-index:1;}' +
+                '.page-info{color:var(--text-secondary);font-size:18px;font-weight:600;white-space:nowrap;letter-spacing:0.5px;text-shadow:0 1px 2px rgba(0,0,0,0.3);position:relative;}' +
+                '.page-info::before{content:"";position:absolute;left:-20px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);}' +
+                '.page-info::after{content:"";position:absolute;right:-20px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);}' +
+                'h1,h2,h3,h4,h5,h6{color:var(--accent);margin-top:60px;margin-bottom:30px;font-weight:700;line-height:1.2;page-break-after:avoid;position:relative;text-shadow:0 2px 4px rgba(0,0,0,0.3);}' +
+                'h1{font-size:2.8em;border-bottom:3px solid var(--accent);padding-bottom:20px;margin-top:80px;background:linear-gradient(135deg,var(--accent),var(--accent-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}' +
+                'h1::after{content:"";position:absolute;bottom:-3px;left:0;width:100px;height:3px;background:var(--gradient-accent);}' +
+                'h2{font-size:2.2em;border-bottom:2px solid var(--accent);padding-bottom:15px;margin-top:70px;}' +
+                'h2::before{content:"";position:absolute;left:-30px;top:0;width:6px;height:100%;background:var(--gradient-accent);border-radius:3px;}' +
+                'h3{font-size:1.9em;margin-top:60px;color:var(--accent-light);}' +
+                'h4{font-size:1.6em;margin-top:50px;}' +
+                'h5{font-size:1.4em;margin-top:45px;}' +
+                'h6{font-size:1.2em;margin-top:40px;}' +
+                'p{margin-bottom:30px;text-align:justify;text-justify:inter-word;font-size:1.1em;line-height:1.8;color:var(--text-primary);text-shadow:0 1px 2px rgba(0,0,0,0.2);}' +
+                'ul,ol{margin:35px 0;padding-left:50px;}' +
+                'li{margin-bottom:18px;position:relative;}' +
+                'li::marker{color:var(--accent);font-weight:bold;}' +
+                'pre{background:linear-gradient(135deg,var(--bg-tertiary),var(--bg-accent));border:2px solid var(--border-color);border-radius:15px;padding:35px;margin:45px 0;overflow-x:auto;box-shadow:0 8px 25px rgba(0,0,0,0.4);position:relative;page-break-inside:avoid;border-image:linear-gradient(135deg,var(--accent),var(--accent-hover)) 1;}' +
+                'pre::before{content:"";position:absolute;top:20px;left:20px;width:18px;height:18px;border-radius:50%;background:#ff5f56;box-shadow:30px 0 0 #ffbd2e,60px 0 0 #27ca3f;border:2px solid rgba(255,255,255,0.2);}' +
+                'pre::after{content:"TERMINAL";position:absolute;top:20px;left:100px;color:var(--text-secondary);font-size:0.8em;font-weight:600;text-transform:uppercase;letter-spacing:1px;}' +
+                'code{font-family:"Fira Code",Monaco,"Cascadia Code","Roboto Mono",Consolas,monospace;font-size:1em;color:#e5e7eb;font-weight:500;}' +
+                'pre code{background:none;padding:0;border-radius:0;}' +
+                'blockquote{border-left:5px solid var(--accent);padding-left:30px;margin:40px 0;font-style:italic;color:var(--text-secondary);position:relative;background:linear-gradient(135deg,rgba(0,217,255,0.05),rgba(0,188,230,0.05));padding:25px 30px;border-radius:10px;}' +
+                'blockquote::before{content:"\\"";position:absolute;left:10px;top:10px;font-size:4em;color:var(--accent);opacity:0.2;font-family:serif;}' +
+                'blockquote::after{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--gradient-accent);border-radius:0 3px 3px 0;}' +
+                'a{color:var(--accent);text-decoration:none;border-bottom:2px solid transparent;transition:all 0.3s ease;font-weight:500;}' +
+                'a:hover{border-bottom-color:var(--accent);color:var(--accent-light);text-shadow:0 0 8px rgba(0,217,255,0.5);}' +
+                'table{width:100%;border-collapse:collapse;margin:40px 0;border-radius:12px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,0.3);border:1px solid var(--border-color);}' +
+                'th,td{padding:18px 20px;text-align:left;border-bottom:1px solid var(--border-color);transition:background 0.3s ease;}' +
+                'th{background:var(--gradient-accent);color:var(--bg-primary);font-weight:700;text-transform:uppercase;font-size:0.9em;letter-spacing:1px;text-shadow:0 1px 2px rgba(0,0,0,0.3);}' +
+                'tr:nth-child(even){background:rgba(255,255,255,0.02);}' +
+                'tr:hover{background:linear-gradient(135deg,rgba(0,217,255,0.08),rgba(0,188,230,0.08));border-left:3px solid var(--accent);}' +
+                'img{max-width:100%;height:auto;border-radius:12px;margin:25px 0;box-shadow:0 8px 25px rgba(0,0,0,0.4);border:2px solid var(--border-color);transition:transform 0.3s ease;}' +
+                'img:hover{transform:scale(1.02);}' +
+                'hr{border:none;height:3px;background:linear-gradient(90deg,transparent,var(--accent),transparent);margin:60px 0;border-radius:2px;}' +
+                '.highlight{background:linear-gradient(135deg,rgba(0,217,255,0.1),rgba(0,188,230,0.1));padding:30px;border-radius:15px;border-left:5px solid var(--accent);margin:40px 0;position:relative;overflow:hidden;}' +
+                '.highlight::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(45deg,transparent 30%,rgba(0,217,255,0.05) 50%,transparent 70%);}' +
+                '.highlight *{position:relative;z-index:1;}' +
+                '.code-block-wrapper{position:relative;margin:45px 0;}' +
+                '.code-language{position:absolute;top:20px;right:20px;background:var(--bg-tertiary);color:var(--text-secondary);padding:8px 15px;border-radius:25px;font-size:0.85em;font-weight:600;text-transform:uppercase;letter-spacing:1px;border:1px solid var(--border-color);}' +
+                '@media (max-width:768px){.revista-content{column-count:1;column-gap:0;column-rule:none;}.revista-container{padding:30px;max-width:100%;}.revista-header h1{font-size:3.2em;}.revista-header{padding:20px;}.revista-nav{padding:20px 25px;gap:25px;bottom:30px;}.nav-btn{width:50px;height:50px;font-size:18px;}.page-info{font-size:16px;}}' +
+                '@media (max-width:480px){.revista-container{padding:20px;border-radius:15px;}.revista-header h1{font-size:2.5em;}.revista-header .subtitle{font-size:1.2em;}.revista-nav{bottom:20px;padding:15px 20px;gap:20px;}.nav-btn{width:45px;height:45px;font-size:16px;}.page-info{font-size:14px;}}' +
+                '@keyframes fadeIn{from{opacity:0;transform:translateY(30px) scale(0.95);}to{opacity:1;transform:translateY(0) scale(1);}}' +
+                '@keyframes glow{0%,100%{box-shadow:0 0 20px rgba(0,217,255,0.3);}50%{box-shadow:0 0 30px rgba(0,217,255,0.6);}}' +
+                '@keyframes slideIn{from{opacity:0;transform:translateX(-50px);}to{opacity:1;transform:translateX(0);}}' +
+                '.revista-container{animation:fadeIn 1s ease-out;}' +
+                '.revista-header{animation:slideIn 0.8s ease-out 0.2s both;}' +
+                '.nav-btn{animation:glow 3s ease-in-out infinite;}' +
+                '@media print{body{background:white !important;color:black !important;padding:20px !important;margin:0 !important;font-size:12pt !important;line-height:1.4 !important;}.revista-container{background:white !important;box-shadow:none !important;border:none !important;padding:0 !important;max-width:none !important;margin:0 !important;}.revista-nav,.nav-btn,.page-info{display:none !important;}.revista-content{column-count:1 !important;column-gap:0 !important;column-rule:none !important;margin:0 !important;padding:0 !important;}.revista-header{border-bottom:2px solid black !important;margin-bottom:30px !important;padding:0 !important;background:none !important;}.revista-header h1{color:black !important;font-size:24pt !important;margin:0 0 10px 0 !important;text-align:center !important;}.revista-header .subtitle{color:black !important;font-size:14pt !important;margin:0 !important;text-align:center !important;}h1,h2,h3,h4,h5,h6{color:black !important;border-bottom:1px solid #333 !important;margin-top:30px !important;margin-bottom:15px !important;page-break-after:avoid !important;}h1{font-size:20pt !important;border-bottom:2px solid black !important;margin-top:40px !important;}h2{font-size:18pt !important;}h3{font-size:16pt !important;}h4{font-size:14pt !important;}p{margin-bottom:15px !important;text-align:justify !important;font-size:12pt !important;color:black !important;}ul,ol{margin:15px 0 !important;padding-left:30px !important;}li{margin-bottom:8px !important;}pre{background:#f8f8f8 !important;border:1px solid #ccc !important;border-radius:4px !important;padding:15px !important;margin:20px 0 !important;overflow-x:auto !important;page-break-inside:avoid !important;font-size:10pt !important;color:black !important;}code{background:none !important;color:black !important;font-size:10pt !important;}table{width:100% !important;border-collapse:collapse !important;margin:20px 0 !important;}th,td{border:1px solid #333 !important;padding:8px !important;text-align:left !important;}th{background:#e0e0e0 !important;font-weight:bold !important;}img{max-width:100% !important;height:auto !important;margin:15px 0 !important;}blockquote{border-left:3px solid #333 !important;padding-left:15px !important;margin:20px 0 !important;font-style:italic !important;}a{color:black !important;text-decoration:underline !important;}hr{border:none !important;border-top:1px solid #333 !important;margin:30px 0 !important;}.highlight{background:#f0f0f0 !important;border:1px solid #ccc !important;padding:15px !important;margin:20px 0 !important;}@page{margin:1in !important;size:A4 !important;}}' +
+                '</style></head><body><div class="revista-container"><div class="revista-header"><h1>Termux Academy</h1><p class="subtitle">Do Junior ao Master em Hacking Ético</p></div><div class="revista-content">' + contentHTML + '</div></div><div class="revista-nav"><button class="nav-btn" onclick="window.scrollTo({top:0,behavior:\'smooth\'})"><i class="fas fa-arrow-up"></i></button><span class="page-info">Revista Digital</span><button class="nav-btn" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:\'smooth\'})"><i class="fas fa-arrow-down"></i></button></div></body></html>';
+
+                // Criar blob e fazer download
+                const blob = new Blob([revistaHTML], { type: 'text/html;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'termux-academy-revista-digital.html';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                this.showNotification('Revista digital exportada como arquivo HTML!', 'success');
+            }
+
+            showNotification(message, type = 'info') {
+                if (window.termuxApp) {
+                    window.termuxApp.showNotification(message, type);
+                }
+            }
+
+            setupReadingMode() {
+                // Update current chapter when section changes
+                const originalShowSection = window.termuxApp?.showSection;
+                if (originalShowSection) {
+                    window.termuxApp.showSection = (targetId) => {
+                        originalShowSection.call(window.termuxApp, targetId);
+                        // Update current chapter index
+                        const chapterIndex = this.chapters.findIndex(chapter => chapter.id === targetId);
+                        if (chapterIndex !== -1) {
+                            this.currentChapterIndex = chapterIndex;
+                            this.updateNavigationButtons();
+                        }
+                    };
+                }
+            }
+        }
+
+        // Initialize SiteBook Manager
+        document.addEventListener('DOMContentLoaded', () => {
+            window.siteBook = new SiteBookManager();
+        });
     </script>
 
     <!-- Fechando o wrapper da página principal -->
