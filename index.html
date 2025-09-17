@@ -609,9 +609,9 @@
     <div class="matrix-bg" id="matrixBg"></div>
     
     <!-- Floating Action Button -->
-    <div class="floating-action" onclick="scrollToTop()" role="button" tabindex="0" aria-label="Voltar ao topo da página">
+    <button class="floating-action" onclick="scrollToTop()" aria-label="Voltar ao topo da página">
         <i class="fas fa-rocket"></i>
-    </div>
+    </button>
 
     <!-- SiteBook Navigation Controls -->
     <div class="sitebook-nav" id="sitebookNav" style="display: none;">
@@ -8240,19 +8240,6 @@ GET /winlogbeat-*/_search
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
-        // Add keyboard support for floating action button
-        document.addEventListener('DOMContentLoaded', () => {
-            const floatingAction = document.querySelector('.floating-action');
-            if (floatingAction) {
-                floatingAction.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        scrollToTop();
-                    }
-                });
-            }
-        });
 
         // Initialize App
         document.addEventListener('DOMContentLoaded', () => {
