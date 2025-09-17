@@ -45,11 +45,6 @@
             flex-direction: column;
         }
         
-        body {
-            display: flex;
-            flex-direction: column;
-        }
-        
         :root {
             --bg-main: #0a0e13;
             --bg-secondary: #1a1f2e;
@@ -598,8 +593,9 @@
 <body class="flex flex-col min-h-screen bg-pattern">
     <!-- Intro Video Overlay -->
     <div id="introVideo" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 9999; display: flex; align-items: center; justify-content: center;">
-        <video id="introVid" autoplay muted style="width: 100%; height: 100%; object-fit: cover;">
+        <video id="introVid" autoplay muted style="width: 100%; height: 100%; object-fit: cover;" aria-label="Vídeo de introdução do Termux Academy">
             <source src="https://i.imgur.com/IDCn1yY.mp4" type="video/mp4">
+            <track kind="captions" src="" srclang="pt" label="Portuguese">
             Seu navegador não suporta o elemento de vídeo.
         </video>
         <button id="skipButton" style="position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.7); color: white; border: 2px solid rgba(255,255,255,0.3); padding: 10px 15px; border-radius: 25px; cursor: pointer; font-size: 14px; transition: all 0.3s ease; z-index: 10000;">
@@ -613,7 +609,7 @@
     <div class="matrix-bg" id="matrixBg"></div>
     
     <!-- Floating Action Button -->
-    <div class="floating-action" onclick="scrollToTop()">
+    <div class="floating-action" onclick="scrollToTop()" role="button" tabindex="0" aria-label="Voltar ao topo da página">
         <i class="fas fa-rocket"></i>
     </div>
 
@@ -7544,7 +7540,6 @@ GET /winlogbeat-*/_search
             // Navigation System
             setupNavigation() {
                 const navLinks = document.querySelectorAll('.nav-link');
-                const contentSections = document.querySelectorAll('.content-section');
 
                 navLinks.forEach(link => {
                     link.addEventListener('click', (e) => {
@@ -7884,10 +7879,10 @@ GET /winlogbeat-*/_search
                 if (command === 'clear') {
                     this.term.clear();
                     this.term.write(this.prompt);
-                } else {
-                    if (response) {
-                        this.term.writeln(response);
-                    }
+                }
+                
+                if (response) {
+                    this.term.writeln(response);
                 }
             }
 
@@ -8068,14 +8063,6 @@ GET /winlogbeat-*/_search
                 return '\x1b[36m╔══════════════════════════════════════════════════════════════╗\x1b[0m\n\x1b[36m║                      SOBRE ESTE PROJETO                     ║\x1b[0m\n\x1b[36m╠══════════════════════════════════════════════════════════════╣\x1b[0m\n\x1b[36m║\x1b[0m \x1b[33mProjeto:\x1b[0m Termux Academy - Terminal Interativo         \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m \x1b[33mDescrição:\x1b[0m Simulador de terminal funcional             \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m \x1b[33mTecnologias:\x1b[0m HTML5, CSS3, JavaScript, XTerm.js         \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m \x1b[33mRecursos:\x1b[0m                                             \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m   • Terminal funcional com XTerm.js                       \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m   • Histórico de comandos navegável                       \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m   • Auto-completar com Tab                               \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m   • Cores ANSI e formatação avançada                     \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m   • Simulação de comandos Linux/Termux                   \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m   • Interface responsiva e moderna                       \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m \x1b[33mObjetivo:\x1b[0m Ensinar comandos Termux de forma interativa   \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m \x1b[33mData:\x1b[0m Setembro de 2025                                \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m \x1b[32m🚀 Terminal funcional implementado com sucesso! 🚀\x1b[0m        \x1b[36m║\x1b[0m\n\x1b[36m╚══════════════════════════════════════════════════════════════╝\x1b[0m';
             }
 
-            getXtermInfo() {
-                return '\x1b[36m╔══════════════════════════════════════════════════════════════╗\x1b[0m\n\x1b[36m║                   INFORMAÇÕES DO XTERM.JS                   ║\x1b[0m\n\x1b[36m╠══════════════════════════════════════════════════════════════╣\x1b[0m\n\x1b[36m║\x1b[0m \x1b[33mBiblioteca:\x1b[0m XTerm.js                                  \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m \x1b[33mDescrição:\x1b[0m Terminal no navegador                      \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m \x1b[33mRecursos:\x1b[0m                                              \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m   • Cursor piscante                                    \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m   • Tema personalizado                                 \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m   • Histórico de comandos (setas ↑↓)                  \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m   • Auto-completar (Tab)                               \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m   • Códigos de escape ANSI                             \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m   • Fonte Fira Code                                    \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m \x1b[33mRepositório:\x1b[0m https://github.com/xtermjs/xterm.js      \x1b[36m║\x1b[0m\n\x1b[36m╚══════════════════════════════════════════════════════════════╝\x1b[0m';
-            }
-
-            getAboutInfo() {
-                return '\x1b[36m╔══════════════════════════════════════════════════════════════╗\x1b[0m\n\x1b[36m║                    TERMUX ACADEMY TERMINAL                  ║\x1b[0m\n\x1b[36m╠══════════════════════════════════════════════════════════════╣\x1b[0m\n\x1b[36m║\x1b[0m \x1b[33mProjeto:\x1b[0m Termux Academy                               \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m \x1b[33mObjetivo:\x1b[0m Ensinar Hacking Ético                       \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m \x1b[33mTecnologias:\x1b[0m                                           \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m   • XTerm.js - Terminal funcional no navegador        \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m   • Tailwind CSS - Estilização moderna                \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m   • JavaScript ES6+ - Funcionalidades avançadas       \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m   • NPM - Gerenciamento de dependências                \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m \x1b[33mComandos especiais:\x1b[0m                                    \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m   • \x1b[32mhelp\x1b[0m - Lista de comandos disponíveis              \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m   • \x1b[32mxterm-info\x1b[0m - Informações do XTerm.js             \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m   • \x1b[32mtermux-info\x1b[0m - Informações do Termux             \x1b[36m║\x1b[0m\n\x1b[36m║\x1b[0m   • \x1b[32mabout\x1b[0m - Sobre este projeto                      \x1b[36m║\x1b[0m\n\x1b[36m╚══════════════════════════════════════════════════════════════╝\x1b[0m';
-            }
-
             // Command Categories
             setupCommandCategories() {
                 const categoryButtons = document.querySelectorAll('.command-category-btn');
@@ -8253,6 +8240,19 @@ GET /winlogbeat-*/_search
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // Add keyboard support for floating action button
+        document.addEventListener('DOMContentLoaded', () => {
+            const floatingAction = document.querySelector('.floating-action');
+            if (floatingAction) {
+                floatingAction.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        scrollToTop();
+                    }
+                });
+            }
+        });
 
         // Initialize App
         document.addEventListener('DOMContentLoaded', () => {
